@@ -26,9 +26,10 @@
   /* Video 9:16, smaller & centered */
   .video-outer { display: flex; justify-content: center; padding: 8px 12px; background: #18191a; }
   .video-wrap { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9/16; background: #000; border-radius: 10px; overflow: hidden; }
-  .video-inner { position: absolute; inset: 0; background: #222; display: flex; align-items: center; justify-content: center; }
-  .video-live-tag { position:absolute; top:12px; left:12px; background:#e41e3f; color:#fff; font-weight:800; font-size:11.5px; padding:4px 8px; border-radius:4px; letter-spacing:.5px; box-shadow:0 2px 8px rgba(228,30,63,.5); }
-  .video-viewers-tag { position:absolute; top:12px; right:12px; background:rgba(0,0,0,.55); color:#fff; font-size:11.5px; padding:4px 8px; border-radius:4px; backdrop-filter: blur(6px); }
+  .video-inner { position: absolute; inset: 0; background: #000; }
+  .video-inner :is(video, iframe, div[id*="vid"], .vturb) { width:100% !important; height:100% !important; object-fit: cover; }
+  .video-live-tag { position:absolute; top:12px; left:12px; background:#e41e3f; color:#fff; font-weight:800; font-size:11.5px; padding:4px 8px; border-radius:4px; letter-spacing:.5px; box-shadow:0 2px 8px rgba(228,30,63,.5); z-index: 10;}
+  .video-viewers-tag { position:absolute; top:12px; right:12px; background:rgba(0,0,0,.55); color:#fff; font-size:11.5px; padding:4px 8px; border-radius:4px; backdrop-filter: blur(6px); z-index: 10;}
 
   /* Reactions */
   .fb-reactions { display: flex; gap: 4px; padding: 4px 6px; border-bottom: 1px solid #3a3b3c; background: #242526; }
@@ -72,7 +73,15 @@
   <div class="video-outer">
     <div class="video-wrap">
       <div class="video-inner">
-        <span style="color: #888; font-size: 14px; font-weight: bold;">[ Video Player Placeholder ]</span>
+        <vturb-smartplayer id="vid-6a9ed0b385277d0dc3a6131b" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+          <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 178.21782178217822% 0 0; z-index: 0; background-color: black;"></div>
+        </vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/f8e465b5-f483-4d08-be19-bc14de388e59/players/6a9ed0b385277d0dc3a6131b/v4/player.js";
+          s.async=!0;
+          document.head.appendChild(s);
+        </script>
       </div>
       <div class="video-live-tag">● LIVE</div>
       <div class="video-viewers-tag">👁 1,281 watching</div>
