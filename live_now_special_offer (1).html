@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>LIVE NOW - Special Offer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #000; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #e4e6eb; -webkit-font-smoothing: antialiased; }
+  .fb-page { max-width: 480px; margin: 0 auto; min-height: 100vh; background: #18191a; }
+
+  /* Header */
+  .fb-header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #242526; position: sticky; top: 0; z-index: 20; }
+  .fb-avatar-wrap { position: relative; }
+  .fb-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,#1877f2,#0a5dc2); display:flex; align-items:center; justify-content:center; color:#fff; font-weight:800; font-size:14px; }
+  .fb-live-dot { position:absolute; bottom:-2px; right:-2px; width:14px; height:14px; border-radius:50%; background:#e41e3f; border:2px solid #242526; animation: pulseDot 1.4s infinite; }
+  @keyframes pulseDot { 0%,100%{opacity:1} 50%{opacity:.5} }
+  .fb-header-info { flex: 1; min-width: 0; }
+  .fb-name { font-weight: 700; font-size: 14.5px; color: #e4e6eb; }
+  .fb-verified { color: #1877f2; font-size: 12px; }
+  .fb-meta { display: flex; gap: 8px; align-items: center; font-size: 12px; color: #b0b3b8; margin-top: 2px; }
+  .fb-live-badge { background: #e41e3f; color:#fff; padding: 1px 6px; border-radius: 3px; font-weight: 800; font-size: 10.5px; letter-spacing: .5px; }
+  .fb-viewers, .fb-elapsed { font-variant-numeric: tabular-nums; }
+  .fb-follow { background: #1877f2; color: #fff; border: 0; font-weight: 700; padding: 7px 14px; border-radius: 6px; font-size: 13px; cursor: pointer;}
+
+  /* Video 9:16, smaller & centered */
+  .video-outer { display: flex; justify-content: center; padding: 8px 12px; background: #18191a; }
+  .video-wrap { position: relative; width: 100%; max-width: 300px; aspect-ratio: 9/16; background: #000; border-radius: 10px; overflow: hidden; }
+  .video-inner { position: absolute; inset: 0; background: #222; display: flex; align-items: center; justify-content: center; }
+  .video-live-tag { position:absolute; top:12px; left:12px; background:#e41e3f; color:#fff; font-weight:800; font-size:11.5px; padding:4px 8px; border-radius:4px; letter-spacing:.5px; box-shadow:0 2px 8px rgba(228,30,63,.5); }
+  .video-viewers-tag { position:absolute; top:12px; right:12px; background:rgba(0,0,0,.55); color:#fff; font-size:11.5px; padding:4px 8px; border-radius:4px; backdrop-filter: blur(6px); }
+
+  /* Reactions */
+  .fb-reactions { display: flex; gap: 4px; padding: 4px 6px; border-bottom: 1px solid #3a3b3c; background: #242526; }
+  .fb-react-btn { flex: 1; background: transparent; border: 0; color: #b0b3b8; font-weight: 600; font-size: 13px; padding: 8px 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; }
+  .fb-react-btn:hover { background: #3a3b3c; }
+  .fb-react-btn span { font-variant-numeric: tabular-nums; font-size: 12.5px; }
+
+  /* Delay + live comments */
+  .delay-block { background: #18191a; padding: 2px 12px 80px; }
+  .live-comments { position: relative; max-height: 210px; padding: 8px 4px; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; }
+  .live-comment { display: flex; gap: 8px; align-items: flex-start; animation: slideIn .35s ease-out; padding: 0 4px; will-change: opacity, transform; }
+  @keyframes slideIn { from { opacity:0; transform: translateY(8px);} to {opacity:1; transform:none;} }
+  .lc-avatar { width:32px; height:32px; border-radius:50%; background: #444; flex-shrink:0; display:block; }
+  .lc-body { background: #3a3b3c; padding: 7px 12px; border-radius: 16px; font-size: 13.5px; line-height:1.35; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+  .lc-name { font-weight: 700; color: #e4e6eb; margin-right: 6px; }
+  .lc-text { color: #d8dadf; }
+
+  .comment-input { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 480px; background: #242526; padding: 10px 12px; display: flex; gap: 8px; align-items: center; border-top: 1px solid #3a3b3c; z-index: 20; }
+  .comment-input input { flex: 1; background: #3a3b3c; border: 0; border-radius: 100px; padding: 9px 14px; color: #e4e6eb; font-size: 13.5px; outline: none; }
+  .comment-input span { font-size: 20px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="fb-page">
+  <header class="fb-header">
+    <div class="fb-avatar-wrap">
+      <div class="fb-avatar">J</div>
+      <span class="fb-live-dot"></span>
+    </div>
+    <div class="fb-header-info">
+      <div class="fb-name">Jesus Official <span class="fb-verified">✓</span></div>
+      <div class="fb-meta">
+        <span class="fb-live-badge">● LIVE</span>
+        <span class="fb-viewers">👁 1,281</span>
+        <span class="fb-elapsed">00:26</span>
+      </div>
+    </div>
+    <button class="fb-follow">Follow</button>
+  </header>
+
+  <div class="video-outer">
+    <div class="video-wrap">
+      <div class="video-inner">
+        <span style="color: #888; font-size: 14px; font-weight: bold;">[ Video Player Placeholder ]</span>
+      </div>
+      <div class="video-live-tag">● LIVE</div>
+      <div class="video-viewers-tag">👁 1,281 watching</div>
+    </div>
+  </div>
+
+  <div class="fb-reactions">
+    <button class="fb-react-btn">🤍 <span>4,833</span></button>
+    <button class="fb-react-btn">💬 <span>325</span></button>
+    <button class="fb-react-btn">🔗 Share</button>
+  </div>
+
+  <div class="delay-block">
+    <div class="live-comments">
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #e41e3f;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Barbara Miller</span>
+          <span class="lc-text">This is the sign I was waiting for</span>
+        </div>
+      </div>
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #1877f2;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Paul Gonzalez</span>
+          <span class="lc-text">My husband and I are watching together, amazing</span>
+        </div>
+      </div>
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #ffd166;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Anthony Rodriguez</span>
+          <span class="lc-text">I cried when I heard this message</span>
+        </div>
+      </div>
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #34a853;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Betty Robinson</span>
+          <span class="lc-text">I'm so grateful I clicked on this live</span>
+        </div>
+      </div>
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #a142f4;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Matthew Martinez</span>
+          <span class="lc-text">I can't stop watching, this is so powerful</span>
+        </div>
+      </div>
+      <div class="live-comment">
+        <div class="lc-avatar" style="background: #ff6d00;"></div>
+        <div class="lc-body">
+          <span class="lc-name">Martha Carter</span>
+          <span class="lc-text">Watch until the end, you won't regret it</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="comment-input">
+      <input placeholder="Write a comment..." disabled="">
+      <span>😊</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
